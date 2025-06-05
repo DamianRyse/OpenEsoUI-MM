@@ -26,6 +26,15 @@ The structure of the configuration file is super simple:
 
 Edit the configuration file with your desired AddOn path and the AddOn IDs you want to keep up to date and that's it. Next time you're executing **OpenESOUI-MM**, it'll download and extract your favorite AddOns for you.
 
+Additionally, if you want to install a single AddOn only without editing your configuration file, you can use the following argument:
+```
+./openesoui-mm --download 150
+```
+You can also specify another target directory:
+```
+./openesoui-mm --target ~/your/desired/AddOn-directory
+```
+
 ## What's the benefit over using the official client?
 First of all, it's completely open-source. Second, it's written in Rust, therefore a standalone binary, instead of a Java application, requiring the Java framework. Third: You can *cronjob* or somewhat automate the process of updating your ESO addons. And probably some other things, too.
 
