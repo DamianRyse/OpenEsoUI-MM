@@ -24,7 +24,7 @@ The structure of the configuration file is super simple:
 *addon_ids* is an array of numeric values which represent the AddOns on [ESOUI.com](https://www.esoui.com). The AddOn ID is part of the URL. For example:
 - https://www.esoui.com/downloads/info3501-SimpleSkyshards.html - The ID is 3501
 
-Edit the configuration file with your desired AddOn paths and the AddOn IDs you want to keep up to date and that's it. Next time you're executing **OpenESOUI-MM**, it'll download and extract your favorite AddOns for you.
+Edit the configuration file with your desired AddOn path and the AddOn IDs you want to keep up to date and that's it. Next time you're executing **OpenESOUI-MM**, it'll download and extract your favorite AddOns for you.
 
 ## What's the benefit over using the official client?
 First of all, it's completely open-source. Second, it's written in Rust, therefore a standalone binary, instead of a Java application, requiring the Java framework. Third: You can *cronjob* or somewhat automate the process of updating your ESO addons. And probably some other things, too.
