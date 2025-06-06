@@ -26,9 +26,9 @@ The structure of the configuration file is super simple:
 
 Edit the configuration file with your desired AddOn path and the AddOn IDs you want to keep up to date and that's it. Next time you're executing **OpenESOUI-MM**, it'll download and extract your favorite AddOns for you.
 
-Additionally, if you want to install a single AddOn only without editing your configuration file, you can use the following argument:
+Additionally, if you want to install a number of Addons without editing your configuration file, you can use the following argument:
 ```
-./openesoui-mm --download 150
+./openesoui-mm --download 150,237,3175
 ```
 You can also specify another target directory:
 ```
