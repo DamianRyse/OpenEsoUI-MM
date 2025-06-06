@@ -12,7 +12,7 @@ use std::fs;
 struct Cli {
     /// Download a single file ID instead of using config
     #[arg(long, value_name = "FILE_ID")]
-    download: Option<u16>,
+    download: Option<String>,
 
     /// Target directory for extraction (overrides config)
     #[arg(long, short, value_name = "DIR")]
@@ -34,8 +34,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Print configuration info
     println!("  ESO addon directory: {}", target_dir);
     if let Some(single_addon_id) = cli.download {
-        println!("Addon IDs: {}", single_addon_id);
-        addon_ids = vec!(single_addon_id);
+        println!("Addon IDs: {:?}", single_addon_id);
+        addon_ids = parse_download_ids(single_addon_id.as_str())?;
     } else {
         println!("Addon IDs: {:?}", config.addon_ids);
         addon_ids = config.addon_ids;
@@ -57,5 +57,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-
+fn parse_download_ids(parameter: &str) -> Result<Vec<u16>, Box<dyn std::error::Error>> {
+    let id_strings: Vec<&str> = parameter.split(",").collect();
+    let mut result: Vec<u16> = Vec::new();
+    
+    for id_str in id_strings {
+        match id_str.trim().parse::<u16>() {
+            Ok(id) => result.push(id),
+            Err(_) => Err(Box::new(std::io::Error::new(std::io::ErrorKind::InvalidInput,"Invalid download ID")))?,
+        }
+    }
+    Ok(result)
+}
 
